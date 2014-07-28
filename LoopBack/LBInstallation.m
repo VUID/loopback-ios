@@ -1,4 +1,5 @@
 #import "LBInstallation.h"
+#import <UICKeyChainStore.h>
 
 @interface LBInstallation ()
 @property (nonatomic, readwrite, copy) NSString *deviceType;
@@ -41,6 +42,7 @@
                            userId: (NSString *) userId
                             badge: (NSNumber *) badge
                     subscriptions: (NSArray *) subscriptions
+						   status: (NSString *) status
                           success: (SLSuccessBlock) success
                           failure: (SLFailureBlock) failure {
     
@@ -62,12 +64,13 @@
         model = (LBInstallation *)[repository modelWithDictionary:@{}];
     }
     
+	[model setId:[UICKeyChainStore stringForKey:@"loopback-installation-id"]?[UICKeyChainStore stringForKey:@"loopback-installation-id"]:nil];
     model.appId = appId;
     model.appVersion = appVersion;
     model.userId = userId;
     model.deviceType = @"ios";
     model.deviceToken = hexToken;
-    model.status = @"Active";
+    model.status = [status isEqual:nil]?@"Active":status;
     model.badge = badge;
     model.subscriptions = subscriptions ? subscriptions : @[];
     model.timeZone = [[NSTimeZone defaultTimeZone] name];

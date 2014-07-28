@@ -93,6 +93,7 @@
                            userId: (NSString *) userId
                             badge: (NSNumber *) badge
                     subscriptions: (NSArray *) subscriptions
+						   status: (NSString *) status
                           success: (SLSuccessBlock) success
                           failure: (SLFailureBlock) failure;
 

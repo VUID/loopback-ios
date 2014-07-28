@@ -73,6 +73,7 @@
                                        userId: userId
                                         badge: badge
                                 subscriptions: subscriptions
+									   status: @"Active"
                                       success: success
                                       failure: failure];
     

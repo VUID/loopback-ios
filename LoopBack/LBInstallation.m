@@ -64,7 +64,6 @@
         model = (LBInstallation *)[repository modelWithDictionary:@{}];
     }
     
-	[model setId:[UICKeyChainStore stringForKey:@"loopback-installation-id"]?[UICKeyChainStore stringForKey:@"loopback-installation-id"]:nil];
     model.appId = appId;
     model.appVersion = appVersion;
     model.userId = userId;

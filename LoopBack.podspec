@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
   s.dependency 'SLRemoting', '~> 1.0.1'
   
   s.ios.deployment_target = '6.1'
-  s.ios.frameworks = 'MobileCoreServices', 'SystemConfiguration', 'Fonudation', 'SenTestingKit', 'UIKit'
+  s.ios.frameworks = 'MobileCoreServices', 'SystemConfiguration', 'Foundation', 'SenTestingKit', 'UIKit'
 end

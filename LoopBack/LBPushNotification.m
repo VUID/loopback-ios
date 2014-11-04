@@ -12,9 +12,18 @@
 
 + (LBPushNotification *) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    // Let the device know we want to receive push notifications
-    [application registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+	// Checks for the iOS 8 notification registration selector
+	if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+		UIUserNotificationType types = UIUserNotificationTypeSound | UIUserNotificationTypeBadge | UIUserNotificationTypeAlert;
+		UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+		
+		// Registers for notification settings and remote notifications
+		[application registerUserNotificationSettings:notificationSettings];
+		[application registerForRemoteNotifications];
+	} else {
+		// Pre-iOS 8 notification registration
+		[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+	}
 
     // Handle APN on Terminated state, app launched because of APN
     NSDictionary *payload = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];

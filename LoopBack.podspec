@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.license  = { :type => 'MIT & StrongLoop', :file => 'LICENSE' }
   s.summary  = 'iOS Client SDK for the LoopBack framework.'
   s.homepage = 'https://github.com/strongloop/loopback-ios'
-  s.authors  = { }
+  s.authors  = { "Alexey Belkevich" => "belkevich.alexey@gmail.com" }
   s.source   = { :git => 'https://github.com/strongloop/loopback-ios.git', :tag => '1.2.1' }
   s.source_files = 'LoopBack'
   s.requires_arc = true
